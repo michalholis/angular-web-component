@@ -1,6 +1,12 @@
 # Základní použití
 
-Zdrojové soubory jsou ve složce `src`. Pomocné skripty ve složce `scripts`, skripty jsou pro linux, konverze pro windows by měla být triviální.
+Zdrojové soubory jsou ve složce `src`. Pomocné skripty ve složce `scripts`, skripty jsou pro linux, konverze pro windows by měla být triviální, skriprty obsahují většinou jedno volání na npm, které je stejné jako pro windows, tak pro linux.
+
+## Workflow komponenty
+
+Komponenta pracuje následujícím způsobem.
+
+![GitHub Logo](docs/ComponentWorkflow.png)
 
 ## Před začátkem vývoje
 
@@ -16,17 +22,24 @@ Komponentu můžeme sestavit pomocí skriptu `build.sh`, který vygeneruje slož
 
 ## Struktura projektu
 
-Samotná komponenta je umístěna v adresáři `Projects/Reservation/src/app/reservation-system`.
+Samotná komponenta je umístěna v adresáři `Projects/Reservation/src/app/reservation-system`. Komponenta obsahuje zejména:
+* vstupní proměnné - barvu tlačítka a api klíč - označeny atributem `@Input()`
+* metodu `Open()`, pomocí které je předán `RequestModel`,
+* metod `onButtonClick`, která předává ResponseModel webové stránce pomocí `CustomEventu` `button-pressed`.
 
 **Příklad vstupního parametru:**
 
 `@Input() public bgColor = 'red';`
 
+**Umístění vstupního modelu:**
+
+`Projects/Reservation/src/app/models/request-model.ts`
+
 **Umístění výstupního modelu:**
 
-`Projects/Reservation/src/app/models/response.ts`
+`Projects/Reservation/src/app/models/response-model.ts`
 
-Zde se jedná o klasickou třídu v typescriptu.
+Zde se jedná o klasické třídy v typescriptu.
 
 V souboru `Projects/Reservation/src/app/index.html` je vzorová obalovací stránka, která se spouští v rámci `run.sh` - tato stránka slouží pro vývoj.
 
