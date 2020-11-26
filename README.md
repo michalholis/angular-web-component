@@ -24,7 +24,7 @@ Samotná komponenta je umístěna v adresáři `Projects/Reservation/src/app/res
 
 **Umístění výstupního modelu:**
 
-`Projects/Reservation/src/app/models/model.ts`
+`Projects/Reservation/src/app/models/response.ts`
 
 Zde se jedná o klasickou třídu v typescriptu.
 
@@ -41,3 +41,7 @@ V obou souborech je uveden příklad odchycení custom eventu s výstupem z komp
     });
 </script>
 ```
+
+## Ladění aplikace
+
+Ladění realizujeme skrze DevTools debugger libovolného prohlížeče - stejně jako jakoukoliv js aplikaci. Mapování pro ts je součástí aplikace, proto můžeme debugovat přímo typescript.

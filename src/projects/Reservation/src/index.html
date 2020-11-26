@@ -9,15 +9,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
+  <button onclick="openComponent()">Otevřít komponentu - tlačítko mimo komponentu</button>
+
   <ui-reservation 
-    firm-id="123"
-    bg-color="#ff0000">
+    id="reservation-component"
+    api-key="123testsapi">
   </ui-reservation>
 
   <script type="text/javascript">
     window.addEventListener("button-pressed", function(e) {
       alert(JSON.stringify(e.detail));
     });
+
+    function openComponent() {
+      var lRequest = {
+        request: [
+          {
+            user: '123',
+            plateNumber: '1TI 4616',
+            user: 'User XXX',
+            maxDiameter: 17,
+            runflat: true,
+            rims: 'steel',
+            dateTimeFrom: new Date(Date.now()),
+            tyreStoreId: 1
+          },
+          {
+            user: '123',
+            plateNumber: '8T7 4776',
+            user: 'User XXX',
+            maxDiameter: 19,
+            runflat: true,
+            rims: 'steel',
+            dateTimeFrom: new Date(Date.now()),
+            tyreStoreId: 2
+          }
+        ]
+      };
+      const lComponent = document.querySelector('#reservation-component');
+      lComponent.Open(JSON.stringify(lRequest));
+    }
   </script>
 </body>
 </html>
