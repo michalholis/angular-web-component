@@ -1,0 +1,7 @@
+:root {
+--bg-color: blue;
+}
+
+.button-test {
+background-color: var(--bg-color) !important;
+}

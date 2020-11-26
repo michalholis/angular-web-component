@@ -1,0 +1,143 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "Reservation": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/Reservation",
+      "sourceRoot": "projects/Reservation/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/Reservation",
+            "index": "projects/Reservation/src/index.html",
+            "main": "projects/Reservation/src/main.ts",
+            "polyfills": "projects/Reservation/src/polyfills.ts",
+            "tsConfig": "projects/Reservation/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/Reservation/src/favicon.ico",
+              "projects/Reservation/src/assets"
+            ],
+            "styles": [
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "bundleName": "bootstrap"
+              },
+              {
+                "input": "projects/Reservation/src/styles.css",
+                "bundleName": "common"
+              }
+            ],
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              },
+              {
+                "input": "node_modules/jquery/dist/jquery.min.js"
+              },
+              {
+                "input": "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/Reservation/src/environments/environment.ts",
+                  "with": "projects/Reservation/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "Reservation:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "Reservation:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "Reservation:build"
+          }
+        },
+        "test": {
+          "builder": "ngx-build-plus:karma",
+          "options": {
+            "main": "projects/Reservation/src/test.ts",
+            "polyfills": "projects/Reservation/src/polyfills.ts",
+            "tsConfig": "projects/Reservation/tsconfig.spec.json",
+            "karmaConfig": "projects/Reservation/karma.conf.js",
+            "assets": [
+              "projects/Reservation/src/favicon.ico",
+              "projects/Reservation/src/assets"
+            ],
+            "styles": [
+              "projects/Reservation/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/Reservation/tsconfig.app.json",
+              "projects/Reservation/tsconfig.spec.json",
+              "projects/Reservation/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/Reservation/e2e/protractor.conf.js",
+            "devServerTarget": "Reservation:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Reservation:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "Reservation"
+}
