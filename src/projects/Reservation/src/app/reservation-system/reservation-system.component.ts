@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ReservationSystemComponent implements OnInit {
 
   @Input() public bgColor = 'red';
+  @Input() public firmId;
 
   constructor() {
   }
